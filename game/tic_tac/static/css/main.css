@@ -167,6 +167,22 @@ body {
     border-top-right-radius: 30px;
 }
 
+#joinGame:hover .fa-arrow-right, #createGame:hover .fa-arrow-right {
+    animation: animateRightArrow .5s infinite;
+}
+
+@keyframes animateRightArrow {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
 @keyframes appearanceBoxUser {
     0% {
         font-size: 0;
