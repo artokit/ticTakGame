@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+body {
+    background: url(../img/background.gif) center center;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden
+}
+
+.bodyWrapper {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.mainMenuWrapper {
+    height: 100%;
+}
+
+.mainMenuWrapper > div {
+    height: 100%;
+    width: 100%;
+}
+
+.PrankMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainMenu {
+    background: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+    min-width: 360px;
+    min-height: 480px;
+    width: 40%;
+    height: 50%;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.MenuHeader {
+    text-align: center;
+    font-size: 36pt;
+    margin: 5px 0 10px 0;
+    font-weight: bold;
+    position: relative;
+}
+
+.neonButton {
+    padding: 10px 25px;
+    background: #04d9ff;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-size: 18pt;
+    font-weight: 300;
+    font-style: italic;
+    transition: .3s;
+}
+
+.goBack {
+    left: 20px;
+    top: 5px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.neonButton:hover {
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 0 30px #6ae8ff;
+}
+
+.StartButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.MenuContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.BasisMenu {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.checkPrank {
+    font-size: 48pt;
+    font-weight: 700;
+}
+
+.formGame {
+    display: flex;
+}
+
+.formGame input {
+    outline: none;
+    border: none;
+    background: white;
+    color: black;
+    font-size: 24pt;
+    width: 240px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    padding: 0 10px;
+}
+
+.GameContent__gamePanel {
+    width: 280px;
+    height: 280px;
+/*    background: white;*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gamePanel__box {
+    flex-basis: 30%;
+    height: 30%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamePanel__box i {
+    color: black;
+    font-size: 0;
+    transition: .5s;
+}
+
+.formGame input::placeholder {
+    color: black;
+}
+
+.formGame button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 36pt;
+    padding: 10px;
+    background: #ee7eff;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+#joinGame:hover .fa-arrow-right, #createGame:hover .fa-arrow-right {
+    animation: animateRightArrow .5s infinite;
+}
+
+
+@keyframes animateWinner {
+    0%{
+        color: black;
+        font-size: 36pt;
+    }
+    50%{
+        color: green;
+        font-size: 32pt;
+    }
+    100%{
+        color: black;
+        font-size: 36pt;
+    }
+}
+
+@keyframes animateLoser {
+    0%{
+        color: black;
+        font-size: 36pt;
+    }
+    50%{
+        color: red;
+        font-size: 32pt;
+    }
+    100%{
+        color: black;
+        font-size: 36pt;
+    }
+}
+
+@keyframes animateRightArrow {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes appearanceBoxUser {
+    0% {
+        font-size: 0;
+    }
+    100% {
+        font-size: 36pt;
+    }
+}

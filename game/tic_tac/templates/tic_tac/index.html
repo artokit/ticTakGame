@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Tic-Tac game</title>
+    <script src="https://kit.fontawesome.com/ce4dadf471.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bodyWrapper">
+        <div class="mainMenu">
+
+            <div class="mainMenuWrapper">
+<!-- style="transform: translateY(-500%); -->
+                <div class="StartMenu BasisMenu">
+                    <div class="StartMenu__header MenuHeader">
+                        <span>Tic-Tac Game</span>
+                    </div>
+                    <div class="MenuContent">
+                        <div class="StartButtons">
+                            <button class="neonButton" onclick="SwitchFunction(switchTo(-200))">Create game</button>
+                            <button class="neonButton" onclick="SwitchFunction(switchTo(-300))">Join the game</button>
+                            <button onclick="SwitchFunction(switchTo(-100))" class="neonButton">Rules</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="RuleMenu BasisMenu">
+                    <div class="MenuHeader">
+                        <i class="fa-solid fa-arrow-left-long goBack"></i>
+                        <span>Rules</span>
+                    </div>
+                    <div class="MenuContent checkPrank">
+                        Are you okay bro?
+                    </div>
+                </div>
+
+                <div class="CraeateRoomMenu BasisMenu">
+                    <div class="MenuHeader">
+                        <i class="fa-solid fa-arrow-left-long goBack"></i>
+                        <span>Create</span>
+                    </div>
+                    <div class="MenuContent">
+                        <div class="formGame">
+                            <input type="text" maxlength="8" placeholder='Code'><button id="createGame" onclick="createGame(this)"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="JoinRoomMenu BasisMenu">
+                    <div class="MenuHeader">
+                        <i class="fa-solid fa-arrow-left-long goBack"></i>
+                        <span>Join</span>
+                    </div>
+                    <div class="MenuContent">
+                        <div class="formGame">
+                            <input type="text" maxlength="8" placeholder='Code'><button id="joinGame" onclick="joinGame(this)"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="WaitMenu BasisMenu">
+                    <div class="MenuHeader">
+                        <i class="fa-solid fa-arrow-left-long goBack"></i>
+                        <span>Wait</span>
+                    </div>
+                    <div class="MenuContent">
+                        <div class="waitContent">
+                            Waiting your enemy.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="WaitConnent BasisMenu">
+                    <div class="MenuHeader">
+                        <span>Game</span>
+                    </div>
+                    <div class="MenuContent">
+                        <div class="GameContent">
+                            <div class="GameContent__gamePanel">
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></i></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                                <div class="gamePanel__box"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+<body>
+</html>
