@@ -130,7 +130,6 @@ body {
 .GameContent__gamePanel {
     width: 280px;
     height: 280px;
-/*    background: white;*/
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -140,7 +139,7 @@ body {
 .gamePanel__box {
     flex-basis: 30%;
     height: 30%;
-    background: white;
+    background: #726d70e5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,33 +170,29 @@ body {
     animation: animateRightArrow .5s infinite;
 }
 
-
-@keyframes animateWinner {
-    0%{
-        color: black;
-        font-size: 36pt;
-    }
-    50%{
-        color: green;
-        font-size: 32pt;
-    }
-    100%{
-        color: black;
-        font-size: 36pt;
-    }
+.GameContent__score {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24pt;
+    margin-bottom: 5px;
 }
 
-@keyframes animateLoser {
+.score_scoreInfo {
+    display: flex;
+    gap: 10px;
+}
+
+@keyframes animateSelect {
     0%{
-        color: black;
+        opacity: 1;
         font-size: 36pt;
     }
     50%{
-        color: red;
+        opacity: .5;
         font-size: 32pt;
     }
-    100%{
-        color: black;
+    100% {
+        opacity: 1;
         font-size: 36pt;
     }
 }

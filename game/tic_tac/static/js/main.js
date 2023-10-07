@@ -26,6 +26,12 @@ socket.onmessage = (event) => {
 		
 		if (choice === 'o') {
 			myChoice = true;
+			document.querySelector('.score_scoreInfo.scoreInfoO .scoreInfo__symbol i').style.color = 'green';
+			document.querySelector('.score_scoreInfo.scoreInfoX .scoreInfo__symbol i').style.color = 'red';
+		} else {
+			myChoice = false;
+			document.querySelector('.score_scoreInfo.scoreInfoO .scoreInfo__symbol i').style.color = 'red';
+			document.querySelector('.score_scoreInfo.scoreInfoX .scoreInfo__symbol i').style.color = 'green';
 		}
 
 		SwitchFunction(switchTo(-500));
@@ -34,6 +40,8 @@ socket.onmessage = (event) => {
 	if (event.data.endsWith('win')) {
 		data = event.data.split(':');
 		let c = data[0];
+		myChoice = (c === choice);
+
 		let indexes = data[1].split(',');
 		selectWinnerChoices(indexes, c);
 	}
@@ -41,8 +49,7 @@ socket.onmessage = (event) => {
 
 let selectWinnerChoices = (indexes, c) => {
 	for (let i = 0; i < indexes.length; i++) {
-		let animName = c === choice ? "animateWinner" : "animateLoser";
-		boxes[Number(indexes[i])].querySelector('i').style.animation = `${animName} 1.5s forwards`;
+		boxes[Number(indexes[i])].querySelector('i').style.animation = `animateSelect 1.5s forwards`;
 	}
 }
 
@@ -95,6 +102,7 @@ let switchTo = (percent) => {
 let createUserBox = (c, panel_box) => {
 	let userBox = document.createElement('i');
 	userBox.className = `fa-solid fa-${c}`;
+	userBox.style.color = (c === choice) ? 'green' : 'red';
 	panel_box.appendChild(userBox);
 	userBox.style.animation = 'appearanceBoxUser .5s forwards';
 }
