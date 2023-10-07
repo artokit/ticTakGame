@@ -182,6 +182,14 @@ body {
     gap: 10px;
 }
 
+.GameContent__currentStep {
+    font-size: 24pt;
+    opacity: .5;
+    transition: .5s;
+    text-align: center;
+    margin-top: 15px;
+}
+
 @keyframes animateSelect {
     0%{
         opacity: 1;
@@ -196,6 +204,19 @@ body {
         font-size: 36pt;
     }
 }
+
+@keyframes deleteChoice {
+    0% {
+        font-size: 36pt;
+    }
+    20% {
+        font-size: 38pt;
+    }
+    100% {
+        font-size: 0;
+    }
+}
+
 
 @keyframes animateRightArrow {
     0% {

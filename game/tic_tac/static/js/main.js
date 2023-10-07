@@ -40,12 +40,49 @@ socket.onmessage = (event) => {
 	if (event.data.endsWith('win')) {
 		data = event.data.split(':');
 		let c = data[0];
+		freezeGameboard();
 		myChoice = (c === choice);
-
+		if (c === 'o') {
+			let stat = document.querySelector('.score_scoreInfo.scoreInfoO .scoreInfo__stat')
+			stat.innerHTML = Number(stat.innerHTML) + 1;
+		} else {
+			let stat = document.querySelector('.score_scoreInfo.scoreInfoX .scoreInfo__stat')
+			stat.innerHTML = Number(stat.innerHTML) + 1;
+		}
 		let indexes = data[1].split(',');
 		selectWinnerChoices(indexes, c);
+		setTimeout(() => {deleteAllChoices()}, 1500);
+		setTimeout(() => {unFreezeGameboard()}, 2000);
+	}
+	if (event.data === 'draw') {
+		freezeGameboard();
+		deleteAllChoices();
+		setTimeout(() => {unFreezeGameboard()}, 500);
 	}
 };
+
+let deleteAllChoices = () => {
+	for (box of document.querySelectorAll('.gamePanel__box i')) {
+		box.style.animation = 'deleteChoice .5s forwards';
+	}
+	setTimeout(() => {
+		for (box of document.querySelectorAll('.gamePanel__box i')) {
+			box.remove();
+		}
+	}, 500);
+}
+
+let unFreezeGameboard = () => {
+	for (box of boxes) {
+		box.className = 'gamePanel__box';
+	}
+}
+
+let freezeGameboard = () => {
+	for (box of boxes) {
+		box.className = 'gamePanel__box non-active';
+	}
+} 
 
 let selectWinnerChoices = (indexes, c) => {
 	for (let i = 0; i < indexes.length; i++) {
@@ -108,6 +145,10 @@ let createUserBox = (c, panel_box) => {
 }
 
 let choiceGameBox = (elem, i) => {
+	if (elem.className.indexOf('non-active') + 1) {
+		return;
+	}
+
 	if (elem.innerHTML || !myChoice) {
 		return;
 	}
@@ -127,3 +168,7 @@ for (let elem of document.querySelectorAll('.gamePanel__box')) {
 	elem.onclick = () => {choiceGameBox(elem, i)};
 }
 
+let currentStep = document.querySelector('.GameContent__currentStep');
+setInterval(() => {
+	currentStep.style.opacity = (myChoice) ? '1' : '.5';
+}, 300);

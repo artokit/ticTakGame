@@ -3,6 +3,14 @@ rooms = {}
 boards = {}
 
 
+def check_draw(board):
+    for i in board:
+        for j in i:
+            if not j:
+                return False
+    return True
+
+
 def check_win(board):
     #  Check diagonal.
     if set([board[0][0], board[1][1], board[2][2]]) in ({'x'}, {'o'}):
@@ -12,11 +20,11 @@ def check_win(board):
         return [2, 4, 6]
     
     # Check straight.
-    for i in range(2):
+    for i in range(3):
         if ''.join(board[i]) in ('xxx', 'ooo'):
-            return [i*2 + j for j in range(2)]
+            return [i*3 + j for j in range(3)]
     
-    for i in range(2):
+    for i in range(3):
         if ''.join([board[0][i], board[1][i], board[2][i]]) in ('xxx', 'ooo'):
             return [i+j for j in range(0, 9, 3)]
 
@@ -70,10 +78,18 @@ class YourConsumer(AsyncConsumer):
                     await i.send({'type': 'websocket.send', 'text': text_data['text']})
             
             res = check_win(boards[code])
+    
             if res:
                 for i in rooms[code]:
                     await i.send({'type': 'websocket.send', 'text': f'{choice}:{",".join(map(str, res))}:win'})
                 
+                boards[code] = [['']*3, ['']*3, ['']*3]
+                return
+            
+            if check_draw(boards[code]):
+                for i in rooms[code]:
+                    await i.send({'type': 'websocket.send', 'text': 'draw'})
+                boards[code] = [['']*3, ['']*3, ['']*3]
 
     async def websocket_disconnect(self, event):
         pass
